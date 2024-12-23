@@ -16,9 +16,8 @@
 #
 # if __name__ == '__main__':
 #     asyncio.run(main('127.0.0.1', 5000, 'abc'))
-from idlelib.colorizer import prog_group_name_to_tag
-
-from typing_extensions import dataclass_transform
+from idlelib.tree import wheel_event
+from idlelib.window import add_windows_to_menu
 
 # print('2'.center(100,'-'))
 # import socket
@@ -72,12 +71,34 @@ from typing_extensions import dataclass_transform
 # if __name__ == '__main__':
 #     asyncio.run(main('127.0.0.1',6000,'abcdefg'))
 
-print('5'.center(100,'-'))
+# print('5'.center(100,'-'))
+# import socket
+# import time,random
+# import asyncio
+#
+#
+# async def main(ip,port,data):
+#     while True:
+#         c = socket.socket()
+#         loop = asyncio.get_running_loop()
+#         await loop.sock_connect(c,(ip,port))
+#         await loop.sock_sendall(c,data.encode('utf-8'))
+#         res = await loop.sock_recv(c,1024)
+#         await asyncio.sleep(0.5)
+#         print(random.randint(1000,9999),res.decode('utf-8'))
+#     c.close()
+#
+# if __name__ == '__main__':
+#     asyncio.run(main('127.0.0.1',5000,'abcdefg'))
+
+
+
+print('6'.center(100,'-'))
+
+
 import socket
-import time,random
 import asyncio
-
-
+import random
 async def main(ip,port,data):
     while True:
         c = socket.socket()
@@ -90,15 +111,7 @@ async def main(ip,port,data):
     c.close()
 
 if __name__ == '__main__':
-    asyncio.run(main('127.0.0.1',5000,'abcdefg'))
-
-
-
-
-
-
-
-
+    asyncio.run(main('127.0.0.1',5001,'abcdefg'))
 
 
 

@@ -29,9 +29,7 @@
 #
 # if __name__ == '__main__':
 #     asyncio.run(main('127.0.0.1', 5000))
-from tkinter import BaseWidget
 
-from certifi.core import where
 
 # print('2'.center(100,'-'))
 # import socket
@@ -119,45 +117,68 @@ from certifi.core import where
 # if __name__ == '__main__':
 #     asyncio.run(main('127.0.0.1',6000))
 
-print('5'.center(100,'-'))
+# print('5'.center(100,'-'))
+#
+# import asyncio
+# import socket,random
+#
+# async def waiter(conn,loop):
+#     while True:
+#         try:
+#             data = await loop.sock_recv(conn,1024)
+#             if not data:
+#                 break
+#             await loop.sock_sendall(conn,data.upper())
+#             print(random.randint(1000,9999),data.decode('utf-8'))
+#         except:
+#             break
+#     conn.close()
+#
+# async def main(ip,port):
+#     s = socket.socket()
+#     s.bind((ip,port))
+#     s.listen(2)
+#     s.setblocking(False)
+#     loop = asyncio.get_running_loop()
+#     while True:
+#         conn,addr = await loop.sock_accept(s)
+#         asyncio.create_task(waiter(conn,loop))
+#
+# if __name__ == '__main__':
+#     asyncio.run(main('127.0.0.1',5000))
 
+print('6'.center(100,'-'))
+
+
+import socket
 import asyncio
-import socket,random
-
+import random
 async def waiter(conn,loop):
     while True:
         try:
             data = await loop.sock_recv(conn,1024)
             if not data:
                 break
-            await loop.sock_sendall(conn,data.upper())
             print(random.randint(1000,9999),data.decode('utf-8'))
+            await loop.sock_sendall(conn,data.upper())
+
         except:
             break
     conn.close()
-
 async def main(ip,port):
     s = socket.socket()
+    s.setblocking(False)
     s.bind((ip,port))
     s.listen(2)
-    s.setblocking(False)
     loop = asyncio.get_running_loop()
     while True:
         conn,addr = await loop.sock_accept(s)
-        asyncio.create_task(waiter(conn,loop))
+        await asyncio.create_task(waiter(conn,loop))
+
+
 
 if __name__ == '__main__':
-    asyncio.run(main('127.0.0.1',5000))
-
-
-
-
-
-
-
-
-
-
+    asyncio.run(main('127.0.0.1',5001))
 
 
 
